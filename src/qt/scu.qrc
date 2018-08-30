@@ -41,11 +41,11 @@
         <file alias="tx_output">res/icons/tx_output.png</file>
         <file alias="tx_inout">res/icons/tx_inout.png</file>
         <file alias="unit_scu">res/icons/unit_scu.png</file>
-        <file alias="unit_mfac">res/icons/unit_mfac.png</file>
-        <file alias="unit_ufac">res/icons/unit_ufac.png</file>
-        <file alias="unit_tfac">res/icons/unit_tfac.png</file>
-        <file alias="unit_tmfac">res/icons/unit_tmfac.png</file>
-        <file alias="unit_tufac">res/icons/unit_tufac.png</file>
+        <file alias="unit_mscu">res/icons/unit_mscu.png</file>
+        <file alias="unit_uscu">res/icons/unit_uscu.png</file>
+        <file alias="unit_tscu">res/icons/unit_tscu.png</file>
+        <file alias="unit_tmscu">res/icons/unit_tmscu.png</file>
+        <file alias="unit_tuscu">res/icons/unit_tuscu.png</file>
         <file alias="lock_closed">res/icons/lock_closed.png</file>
         <file alias="lock_open">res/icons/lock_open.png</file>
         <file alias="key">res/icons/key.png</file>

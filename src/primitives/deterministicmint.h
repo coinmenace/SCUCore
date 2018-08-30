@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_DETERMINISTICMINT_H
-#define FAC_DETERMINISTICMINT_H
+#ifndef SCU_DETERMINISTICMINT_H
+#define SCU_DETERMINISTICMINT_H
 
 #include <libzerocoin/Denominations.h>
 #include <uint256.h>
@@ -64,4 +64,4 @@ public:
     };
 };
 
-#endif //FAC_DETERMINISTICMINT_H
+#endif //SCU_DETERMINISTICMINT_H

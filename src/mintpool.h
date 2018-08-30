@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_MINTPOOL_H
-#define FAC_MINTPOOL_H
+#ifndef SCU_MINTPOOL_H
+#define SCU_MINTPOOL_H
 
 #include <map>
 #include <list>
@@ -50,4 +50,4 @@ public:
 };
 
 
-#endif //FAC_MINTPOOL_H
+#endif //SCU_MINTPOOL_H

@@ -45,9 +45,9 @@ timestamp='2017-01-01'
 
 # The goal of this file is to map all the various variations of a given
 # machine specification into a single specification in the form:
-#	CPU_TYPE-MANUFACTURER-OPERATING_SYSTEM
+#	CPU_TYPE-MANUSCUTURER-OPERATING_SYSTEM
 # or in some cases, the newer four-part form:
-#	CPU_TYPE-MANUFACTURER-KERNEL-OPERATING_SYSTEM
+#	CPU_TYPE-MANUSCUTURER-KERNEL-OPERATING_SYSTEM
 # It is wrong to echo any other type of specification.
 
 me=`echo "$0" | sed -e 's,.*/,,'`
@@ -1558,10 +1558,10 @@ else
 # The value should be what the vendor currently ships out the door with their
 # machine or put another way, the most popular os provided with the machine.
 
-# Note that if you're going to try to match "-MANUFACTURER" here (say,
+# Note that if you're going to try to match "-MANUSCUTURER" here (say,
 # "-sun"), then you have to tell the case statement up towards the top
-# that MANUFACTURER isn't an operating system.  Otherwise, code above
-# will signal an error saying that MANUFACTURER isn't an operating
+# that MANUSCUTURER isn't an operating system.  Otherwise, code above
+# will signal an error saying that MANUSCUTURER isn't an operating
 # system, and we'll never get to this point.
 
 case $basic_machine in

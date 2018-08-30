@@ -495,7 +495,7 @@ BOOST_AUTO_TEST_CASE(deterministic_tests)
     for (int i = 0; i < nTests; i++) {
         PrivateCoin coin(Params().Zerocoin_Params(false), denom, false);
         CDeterministicMint dMint;
-        zWallet.GenerateDeterministicZFAC(denom, coin, dMint);
+        zWallet.GenerateDeterministicZSCU(denom, coin, dMint);
         vCoins.emplace_back(coin);
     }
 

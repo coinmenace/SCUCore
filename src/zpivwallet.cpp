@@ -24,12 +24,12 @@ CzSCUWallet::CzSCUWallet(std::string strWalletFile)
     //Check for old db version of storing zpiv seed
     if (fFirstRun) {
         uint256 seed;
-        if (walletdb.ReadZFACSeed_deprecated(seed)) {
+        if (walletdb.ReadZSCUSeed_deprecated(seed)) {
             //Update to new format, erase old
             seedMaster = seed;
             hashSeed = Hash(seed.begin(), seed.end());
             if (pwalletMain->AddDeterministicSeed(seed)) {
-                if (walletdb.EraseZFACSeed_deprecated()) {
+                if (walletdb.EraseZSCUSeed_deprecated()) {
                     LogPrintf("%s: Updated zSCU seed databasing\n", __func__);
                     fFirstRun = false;
                 } else {
@@ -84,8 +84,8 @@ bool CzSCUWallet::SetMasterSeed(const uint256& seedMaster, bool fResetCount)
     nCountLastUsed = 0;
 
     if (fResetCount)
-        walletdb.WriteZFACCount(nCountLastUsed);
-    else if (!walletdb.ReadZFACCount(nCountLastUsed))
+        walletdb.WriteZSCUCount(nCountLastUsed);
+    else if (!walletdb.ReadZSCUCount(nCountLastUsed))
         nCountLastUsed = 0;
 
     mintPool.Reset();
@@ -146,7 +146,7 @@ void CzSCUWallet::GenerateMintPool(uint32_t nCountStart, uint32_t nCountEnd)
         CBigNum bnSerial;
         CBigNum bnRandomness;
         CKey key;
-        SeedToZFAC(seedZerocoin, bnValue, bnSerial, bnRandomness, key);
+        SeedToZSCU(seedZerocoin, bnValue, bnSerial, bnRandomness, key);
 
         mintPool.Add(bnValue, i);
         CWalletDB(strWalletFile).WriteMintPoolPair(hashSeed, GetPubCoinHash(bnValue), i);
@@ -292,7 +292,7 @@ bool CzSCUWallet::SetMintSeen(const CBigNum& bnValue, const int& nHeight, const 
     CBigNum bnSerial;
     CBigNum bnRandomness;
     CKey key;
-    SeedToZFAC(seedZerocoin, bnValueGen, bnSerial, bnRandomness, key);
+    SeedToZSCU(seedZerocoin, bnValueGen, bnSerial, bnRandomness, key);
 
     //Sanity check
     if (bnValueGen != bnValue)
@@ -333,7 +333,7 @@ bool CzSCUWallet::SetMintSeen(const CBigNum& bnValue, const int& nHeight, const 
     if (nCountLastUsed < pMint.second) {
         CWalletDB walletdb(strWalletFile);
         nCountLastUsed = pMint.second;
-        walletdb.WriteZFACCount(nCountLastUsed);
+        walletdb.WriteZSCUCount(nCountLastUsed);
     }
 
     //remove from the pool
@@ -350,7 +350,7 @@ bool IsValidCoinValue(const CBigNum& bnValue)
     bnValue.isPrime();
 }
 
-void CzSCUWallet::SeedToZFAC(const uint512& seedZerocoin, CBigNum& bnValue, CBigNum& bnSerial, CBigNum& bnRandomness, CKey& key)
+void CzSCUWallet::SeedToZSCU(const uint512& seedZerocoin, CBigNum& bnValue, CBigNum& bnSerial, CBigNum& bnRandomness, CKey& key)
 {
     ZerocoinParams* params = Params().Zerocoin_Params(false);
 
@@ -411,10 +411,10 @@ void CzSCUWallet::UpdateCount()
 {
     nCountLastUsed++;
     CWalletDB walletdb(strWalletFile);
-    walletdb.WriteZFACCount(nCountLastUsed);
+    walletdb.WriteZSCUCount(nCountLastUsed);
 }
 
-void CzSCUWallet::GenerateDeterministicZFAC(CoinDenomination denom, PrivateCoin& coin, CDeterministicMint& dMint, bool fGenerateOnly)
+void CzSCUWallet::GenerateDeterministicZSCU(CoinDenomination denom, PrivateCoin& coin, CDeterministicMint& dMint, bool fGenerateOnly)
 {
     GenerateMint(nCountLastUsed + 1, denom, coin, dMint);
     if (fGenerateOnly)
@@ -431,7 +431,7 @@ void CzSCUWallet::GenerateMint(const uint32_t& nCount, const CoinDenomination de
     CBigNum bnSerial;
     CBigNum bnRandomness;
     CKey key;
-    SeedToZFAC(seedZerocoin, bnValue, bnSerial, bnRandomness, key);
+    SeedToZSCU(seedZerocoin, bnValue, bnSerial, bnRandomness, key);
     coin = PrivateCoin(Params().Zerocoin_Params(false), denom, bnSerial, bnRandomness);
     coin.setPrivKey(key.GetPrivKey());
     coin.setVersion(PrivateCoin::CURRENT_VERSION);

@@ -2,10 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_INVALID_H
-#define FAC_INVALID_H
+#ifndef SCU_INVALID_H
+#define SCU_INVALID_H
 
-#endif //FAC_INVALID_H
+#endif //SCU_INVALID_H
 
 #include <libzerocoin/bignum.h>
 #include <univalue/include/univalue.h>

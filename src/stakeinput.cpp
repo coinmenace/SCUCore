@@ -126,7 +126,7 @@ bool CZPivStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nT
     CTxOut outReward;
     libzerocoin::CoinDenomination denomStaked = libzerocoin::AmountToZerocoinDenomination(this->GetValue());
     CDeterministicMint dMint;
-    if (!pwallet->CreateZFACOutPut(denomStaked, outReward, dMint))
+    if (!pwallet->CreateZSCUOutPut(denomStaked, outReward, dMint))
         return error("%s: failed to create zSCU output", __func__);
     vout.emplace_back(outReward);
 
@@ -137,7 +137,7 @@ bool CZPivStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nT
     for (unsigned int i = 0; i < 3; i++) {
         CTxOut out;
         CDeterministicMint dMintReward;
-        if (!pwallet->CreateZFACOutPut(libzerocoin::CoinDenomination::ZQ_ONE, out, dMintReward))
+        if (!pwallet->CreateZSCUOutPut(libzerocoin::CoinDenomination::ZQ_ONE, out, dMintReward))
             return error("%s: failed to create zSCU output", __func__);
         vout.emplace_back(out);
 

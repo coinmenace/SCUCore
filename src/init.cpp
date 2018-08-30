@@ -1456,10 +1456,10 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                 // Recalculate money supply for blocks that are impacted by accounting issue after zerocoin activation
                 if (GetBoolArg("-reindexmoneysupply", false)) {
                     if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
-                        RecalculateZFACMinted();
-                        RecalculateZFACSpent();
+                        RecalculateZSCUMinted();
+                        RecalculateZSCUSpent();
                     }
-                    RecalculateFACSupply(1);
+                    RecalculateSCUSupply(1);
                 }
 
                 // Force recalculation of accumulators.
@@ -1857,8 +1857,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
        is convertable to another.
 
        For example:
-       1FAC+1000 == (.1FAC+100)*10
-       10FAC+10000 == (1FAC+1000)*10
+       1SCU+1000 == (.1SCU+100)*10
+       10SCU+10000 == (1SCU+1000)*10
     */
     obfuScationDenominations.push_back((10000 * COIN) + 10000000);
     obfuScationDenominations.push_back((1000 * COIN) + 1000000);

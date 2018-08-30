@@ -466,16 +466,16 @@ scu_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
 # scu-tx binary #
-scu_cli_SOURCES = scu-tx.cpp
-scu_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-scu_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-scu_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+scu_tx_SOURCES = scu-tx.cpp
+scu_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+scu_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+scu_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-scu_cli_SOURCES += scu-tx-res.rc
+scu_tx_SOURCES += scu-tx-res.rc
 endif
 
-scu_cli_LDADD = \
+scu_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_ZEROCOIN) \
@@ -483,7 +483,7 @@ scu_cli_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-scu_cli_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+scu_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # bitcoinconsensus library #

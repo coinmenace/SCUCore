@@ -164,7 +164,7 @@ OverviewPage::~OverviewPage()
     delete ui;
 }
 
-void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBalance, QString& sFACPercentage, QString& szSCUPercentage)
+void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBalance, QString& sSCUPercentage, QString& szSCUPercentage)
 {
     int nPrecision = 2;
     double dzPercentage = 0.0;
@@ -184,7 +184,7 @@ void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBala
     double dPercentage = 100.0 - dzPercentage;
     
     szSCUPercentage = "(" + QLocale(QLocale::system()).toString(dzPercentage, 'f', nPrecision) + " %)";
-    sFACPercentage = "(" + QLocale(QLocale::system()).toString(dPercentage, 'f', nPrecision) + " %)";
+    sSCUPercentage = "(" + QLocale(QLocale::system()).toString(dPercentage, 'f', nPrecision) + " %)";
     
 }
 
@@ -249,7 +249,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelTotalz->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, sumTotalBalance, false, BitcoinUnits::separatorAlways));
 
     // Percentage labels
-    ui->labelPIVPercent->setText(sPercentage);
+    ui->labelSCUPercent->setText(sPercentage);
     ui->labelzSCUPercent->setText(szPercentage);
 
     // Adjust bubble-help according to AutoMint settings
@@ -270,24 +270,24 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     bool showSumAvailable = settingShowAllBalances || sumTotalBalance != availableTotalBalance;
     ui->labelBalanceTextz->setVisible(showSumAvailable);
     ui->labelBalancez->setVisible(showSumAvailable);
-    bool showFACAvailable = settingShowAllBalances || pivAvailableBalance != nTotalBalance;
-    bool showWatchOnlyFACAvailable = watchOnlyBalance != nTotalWatchBalance;
-    bool showFACPending = settingShowAllBalances || unconfirmedBalance != 0;
-    bool showWatchOnlyFACPending = watchUnconfBalance != 0;
-    bool showFACLocked = settingShowAllBalances || nLockedBalance != 0;
-    bool showWatchOnlyFACLocked = nWatchOnlyLockedBalance != 0;
+    bool showSCUAvailable = settingShowAllBalances || pivAvailableBalance != nTotalBalance;
+    bool showWatchOnlySCUAvailable = watchOnlyBalance != nTotalWatchBalance;
+    bool showSCUPending = settingShowAllBalances || unconfirmedBalance != 0;
+    bool showWatchOnlySCUPending = watchUnconfBalance != 0;
+    bool showSCULocked = settingShowAllBalances || nLockedBalance != 0;
+    bool showWatchOnlySCULocked = nWatchOnlyLockedBalance != 0;
     bool showImmature = settingShowAllBalances || immatureBalance != 0;
     bool showWatchOnlyImmature = watchImmatureBalance != 0;
     bool showWatchOnly = nTotalWatchBalance != 0;
-    ui->labelBalance->setVisible(showFACAvailable || showWatchOnlyFACAvailable);
-    ui->labelBalanceText->setVisible(showFACAvailable || showWatchOnlyFACAvailable);
-    ui->labelWatchAvailable->setVisible(showFACAvailable && showWatchOnly);
-    ui->labelUnconfirmed->setVisible(showFACPending || showWatchOnlyFACPending);
-    ui->labelPendingText->setVisible(showFACPending || showWatchOnlyFACPending);
-    ui->labelWatchPending->setVisible(showFACPending && showWatchOnly);
-    ui->labelLockedBalance->setVisible(showFACLocked || showWatchOnlyFACLocked);
-    ui->labelLockedBalanceText->setVisible(showFACLocked || showWatchOnlyFACLocked);
-    ui->labelWatchLocked->setVisible(showFACLocked && showWatchOnly);
+    ui->labelBalance->setVisible(showSCUAvailable || showWatchOnlySCUAvailable);
+    ui->labelBalanceText->setVisible(showSCUAvailable || showWatchOnlySCUAvailable);
+    ui->labelWatchAvailable->setVisible(showSCUAvailable && showWatchOnly);
+    ui->labelUnconfirmed->setVisible(showSCUPending || showWatchOnlySCUPending);
+    ui->labelPendingText->setVisible(showSCUPending || showWatchOnlySCUPending);
+    ui->labelWatchPending->setVisible(showSCUPending && showWatchOnly);
+    ui->labelLockedBalance->setVisible(showSCULocked || showWatchOnlySCULocked);
+    ui->labelLockedBalanceText->setVisible(showSCULocked || showWatchOnlySCULocked);
+    ui->labelWatchLocked->setVisible(showSCULocked && showWatchOnly);
     ui->labelImmature->setVisible(showImmature || showWatchOnlyImmature); // for symmetry reasons also show immature label when the watch-only one is shown
     ui->labelImmatureText->setVisible(showImmature || showWatchOnlyImmature);
     ui->labelWatchImmature->setVisible(showImmature && showWatchOnly); // show watch-only immature balance

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_KEY_H
-#define FAC_KEY_H
+#ifndef SCU_KEY_H
+#define SCU_KEY_H
 
 #include "allocators.h"
 #include "serialize.h"
@@ -181,4 +181,4 @@ void ECC_Stop(void);
 /** Check that required EC support is available at runtime. */
 bool ECC_InitSanityCheck(void);
 
-#endif // FAC_KEY_H
+#endif // SCU_KEY_H

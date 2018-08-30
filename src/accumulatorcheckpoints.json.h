@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_ACCUMULATORCHECKPOINTS_JSON_H
-#define FAC_ACCUMULATORCHECKPOINTS_JSON_H
+#ifndef SCU_ACCUMULATORCHECKPOINTS_JSON_H
+#define SCU_ACCUMULATORCHECKPOINTS_JSON_H
 
 #include <string>
 std::string GetMainCheckpoints() {
@@ -475,4 +475,4 @@ std::string GetRegTestCheckpoints() {
     return strRegTestCheckpoints;
 }
 
-#endif //FAC_ACCUMULATORCHECKPOINTS_JSON_H
+#endif //SCU_ACCUMULATORCHECKPOINTS_JSON_H

@@ -20,8 +20,8 @@ QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
     unitlist.append(SCU);
-    unitlist.append(mFAC);
-    unitlist.append(uFAC);
+    unitlist.append(mSCU);
+    unitlist.append(uSCU);
     return unitlist;
 }
 
@@ -29,8 +29,8 @@ bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
     case SCU:
-    case mFAC:
-    case uFAC:
+    case mSCU:
+    case uSCU:
         return true;
     default:
         return false;
@@ -42,9 +42,9 @@ QString BitcoinUnits::id(int unit)
     switch (unit) {
     case SCU:
         return QString("scu");
-    case mFAC:
+    case mSCU:
         return QString("mfac");
-    case uFAC:
+    case uSCU:
         return QString::fromUtf8("ufac");
     default:
         return QString("???");
@@ -57,21 +57,21 @@ QString BitcoinUnits::name(int unit)
         switch (unit) {
         case SCU:
             return QString("SCU");
-        case mFAC:
-            return QString("mFAC");
-        case uFAC:
-            return QString::fromUtf8("μFAC");
+        case mSCU:
+            return QString("mSCU");
+        case uSCU:
+            return QString::fromUtf8("μSCU");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
         case SCU:
-            return QString("tFAC");
-        case mFAC:
-            return QString("mtFAC");
-        case uFAC:
-            return QString::fromUtf8("μtFAC");
+            return QString("tSCU");
+        case mSCU:
+            return QString("mtSCU");
+        case uSCU:
+            return QString::fromUtf8("μtSCU");
         default:
             return QString("???");
         }
@@ -84,9 +84,9 @@ QString BitcoinUnits::description(int unit)
         switch (unit) {
         case SCU:
             return QString("SCU");
-        case mFAC:
+        case mSCU:
             return QString("Milli-SCU (1 / 1" THIN_SP_UTF8 "000)");
-        case uFAC:
+        case uSCU:
             return QString("Micro-SCU (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
@@ -94,11 +94,11 @@ QString BitcoinUnits::description(int unit)
     } else {
         switch (unit) {
         case SCU:
-            return QString("TestFACs");
-        case mFAC:
-            return QString("Milli-TestFAC (1 / 1" THIN_SP_UTF8 "000)");
-        case uFAC:
-            return QString("Micro-TestFAC (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            return QString("TestSCUs");
+        case mSCU:
+            return QString("Milli-TestSCU (1 / 1" THIN_SP_UTF8 "000)");
+        case uSCU:
+            return QString("Micro-TestSCU (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -110,9 +110,9 @@ qint64 BitcoinUnits::factor(int unit)
     switch (unit) {
     case SCU:
         return 100000000;
-    case mFAC:
+    case mSCU:
         return 100000;
-    case uFAC:
+    case uSCU:
         return 100;
     default:
         return 100000000;
@@ -124,9 +124,9 @@ int BitcoinUnits::decimals(int unit)
     switch (unit) {
     case SCU:
         return 8;
-    case mFAC:
+    case mSCU:
         return 5;
-    case uFAC:
+    case uSCU:
         return 2;
     default:
         return 0;

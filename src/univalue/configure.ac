@@ -30,7 +30,7 @@ AM_INIT_AUTOMAKE([subdir-objects foreign])
 LIBUNIVALUE_MAJOR_VERSION=libunivalue_major_version
 LIBUNIVALUE_MINOR_VERSION=libunivalue_minor_version
 LIBUNIVALUE_MICRO_VERSION=libunivalue_micro_version
-LIBUNIVALUE_INTERFACE_AGE=libunivalue_interface_age
+LIBUNIVALUE_INTERSCUE_AGE=libunivalue_interface_age
 
 # ABI version
 # http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html

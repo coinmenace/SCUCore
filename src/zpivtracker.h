@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_ZFACTRACKER_H
-#define FAC_ZFACTRACKER_H
+#ifndef SCU_ZSCUTRACKER_H
+#define SCU_ZSCUTRACKER_H
 
 #include "primitives/zerocoin.h"
 #include <list>
@@ -48,4 +48,4 @@ public:
     void Clear();
 };
 
-#endif //FAC_ZFACTRACKER_H
+#endif //SCU_ZSCUTRACKER_H

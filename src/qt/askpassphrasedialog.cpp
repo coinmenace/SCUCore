@@ -83,7 +83,7 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget* parent, WalletModel
     }
 
     // It doesn't make sense to show the checkbox for sending SCU because you wouldn't check it anyway.
-    if (context == Context::Send_FAC || context == Context::Send_zSCU) {
+    if (context == Context::Send_SCU || context == Context::Send_zSCU) {
         ui->anonymizationCheckBox->hide();
     }
 
@@ -133,7 +133,7 @@ void AskPassphraseDialog::accept()
                         "<qt>" +
                             tr("SCU will close now to finish the encryption process. "
                                "Remember that encrypting your wallet cannot fully protect "
-                               "your FACs from being stolen by malware infecting your computer.") +
+                               "your SCUs from being stolen by malware infecting your computer.") +
                             "<br><br><b>" +
                             tr("IMPORTANT: Any previous backups you have made of your wallet file "
                                "should be replaced with the newly generated, encrypted wallet file. "

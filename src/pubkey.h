@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_PUBKEY_H
-#define FAC_PUBKEY_H
+#ifndef SCU_PUBKEY_H
+#define SCU_PUBKEY_H
 
 #include "hash.h"
 #include "serialize.h"
@@ -268,4 +268,4 @@ public:
     ~ECCVerifyHandle();
 };
 
-#endif // FAC_PUBKEY_H
+#endif // SCU_PUBKEY_H

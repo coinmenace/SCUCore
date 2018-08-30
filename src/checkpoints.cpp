@@ -23,7 +23,7 @@ namespace Checkpoints
      * can be up to 20, while when downloading from a slow network with a
      * fast multicore CPU, it won't be much higher than 1.
      */
-static const double SIGCHECK_VERIFICATION_FACTOR = 5.0;
+static const double SIGCHECK_VERIFICATION_SCUTOR = 5.0;
 
 bool fEnabled = true;
 
@@ -48,7 +48,7 @@ double GuessVerificationProgress(CBlockIndex* pindex, bool fSigchecks)
 
     int64_t nNow = time(NULL);
 
-    double fSigcheckVerificationFactor = fSigchecks ? SIGCHECK_VERIFICATION_FACTOR : 1.0;
+    double fSigcheckVerificationFactor = fSigchecks ? SIGCHECK_VERIFICATION_SCUTOR : 1.0;
     double fWorkBefore = 0.0; // Amount of work done before pindex
     double fWorkAfter = 0.0;  // Amount of work left after pindex (estimated)
     // Work is defined as: 1.0 per transaction before the last checkpoint, and

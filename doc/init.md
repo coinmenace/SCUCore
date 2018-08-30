@@ -89,7 +89,7 @@ use old versions of Upstart and do not supply the start-stop-daemon uitility.
 Copy scud.init to /etc/init.d/scud. Test by running "service scud start".
 
 Using this script, you can adjust the path and flags to the scud program by
-setting the FACD and FLAGS environment variables in the file
+setting the SCUD and FLAGS environment variables in the file
 /etc/sysconfig/scud. You can also use the DAEMONOPTS environment variable here.
 
 5. Auto-respawn

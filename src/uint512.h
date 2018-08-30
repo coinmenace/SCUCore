@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_UINT512_H
-#define FAC_UINT512_H
+#ifndef SCU_UINT512_H
+#define SCU_UINT512_H
 
 #include "arith_uint256.h"
 #include "uint256.h"
@@ -42,4 +42,4 @@ inline uint512 uint512S(const char* str)
     return rv;
 }
 
-#endif // FAC_UINT512_H
+#endif // SCU_UINT512_H

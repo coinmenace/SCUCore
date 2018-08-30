@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_SPENDTYPE_H
-#define FAC_SPENDTYPE_H
+#ifndef SCU_SPENDTYPE_H
+#define SCU_SPENDTYPE_H
 
 #include <cstdint>
 
@@ -16,4 +16,4 @@ namespace libzerocoin {
     };
 }
 
-#endif //FAC_SPENDTYPE_H
+#endif //SCU_SPENDTYPE_H

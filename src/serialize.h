@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_SERIALIZE_H
-#define FAC_SERIALIZE_H
+#ifndef SCU_SERIALIZE_H
+#define SCU_SERIALIZE_H
 
 #include <algorithm>
 #include <assert.h>
@@ -965,4 +965,4 @@ public:
     }
 };
 
-#endif // FAC_SERIALIZE_H
+#endif // SCU_SERIALIZE_H

@@ -34,7 +34,7 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent, Qt::WindowSystem
     ui->setupUi(this);
 
     // "Spending 999999 zSCU ought to be enough for anybody." - Bill Gates, 2017
-    ui->zFacpayAmount->setValidator( new QDoubleValidator(0.0, 21000000.0, 20, this) );
+    ui->zScupayAmount->setValidator( new QDoubleValidator(0.0, 21000000.0, 20, this) );
     ui->labelMintAmountValue->setValidator( new QIntValidator(0, 999999, this) );
 
     // Default texts for (mini-) coincontrol
@@ -150,7 +150,7 @@ void PrivacyDialog::on_addressBookButton_clicked()
     dlg.setModel(walletModel->getAddressTableModel());
     if (dlg.exec()) {
         ui->payTo->setText(dlg.getReturnValue());
-        ui->zFacpayAmount->setFocus();
+        ui->zScupayAmount->setFocus();
     }
 }
 
@@ -292,19 +292,19 @@ void PrivacyDialog::on_pushButtonSpendzSCU_clicked()
     sendzSCU();
 }
 
-void PrivacyDialog::on_pushButtonZFacControl_clicked()
+void PrivacyDialog::on_pushButtonZScuControl_clicked()
 {
     if (!walletModel || !walletModel->getOptionsModel())
         return;
 
-    ZSCUControlDialog* zFacControl = new ZSCUControlDialog(this);
-    zFacControl->setModel(walletModel);
-    zFacControl->exec();
+    ZSCUControlDialog* zScuControl = new ZSCUControlDialog(this);
+    zScuControl->setModel(walletModel);
+    zScuControl->exec();
 }
 
-void PrivacyDialog::setZFacControlLabels(int64_t nAmount, int nQuantity)
+void PrivacyDialog::setZScuControlLabels(int64_t nAmount, int nQuantity)
 {
-    ui->labelzFacSelected_int->setText(QString::number(nAmount));
+    ui->labelzScuSelected_int->setText(QString::number(nAmount));
     ui->labelQuantitySelected_int->setText(QString::number(nQuantity));
 }
 
@@ -331,13 +331,13 @@ void PrivacyDialog::sendzSCU()
     }
 
     // Double is allowed now
-    double dAmount = ui->zFacpayAmount->text().toDouble();
+    double dAmount = ui->zScupayAmount->text().toDouble();
     CAmount nAmount = roundint64(dAmount* COIN);
 
     // Check amount validity
     if (!MoneyRange(nAmount) || nAmount <= 0.0) {
         QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Invalid Send Amount"), QMessageBox::Ok, QMessageBox::Ok);
-        ui->zFacpayAmount->setFocus();
+        ui->zScupayAmount->setFocus();
         return;
     }
 
@@ -365,7 +365,7 @@ void PrivacyDialog::sendzSCU()
 
         if (retval != QMessageBox::Yes) {
             // Sending canceled
-            ui->zFacpayAmount->setFocus();
+            ui->zScupayAmount->setFocus();
             return;
         }
     }
@@ -451,7 +451,7 @@ void PrivacyDialog::sendzSCU()
 
     // Display errors during spend
     if (!fSuccess) {
-        if (receipt.GetStatus() == ZFAC_SPEND_V1_SEC_LEVEL) {
+        if (receipt.GetStatus() == ZSCU_SPEND_V1_SEC_LEVEL) {
             QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Version 1 zSCU require a security level of 100 to successfully spend."), QMessageBox::Ok, QMessageBox::Ok);
             ui->TEMintStatus->setPlainText(tr("Failed to spend zSCU"));
             ui->TEMintStatus->repaint();
@@ -470,7 +470,7 @@ void PrivacyDialog::sendzSCU()
             QMessageBox::warning(this, tr("Spend Zerocoin"), receipt.GetStatusMessage().c_str(), QMessageBox::Ok, QMessageBox::Ok);
             ui->TEMintStatus->setPlainText(tr("Spend Zerocoin failed with status = ") +QString::number(receipt.GetStatus(), 10) + "\n" + "Message: " + QString::fromStdString(receipt.GetStatusMessage()));
         }
-        ui->zFacpayAmount->setFocus();
+        ui->zScupayAmount->setFocus();
         ui->TEMintStatus->repaint();
         ui->TEMintStatus->verticalScrollBar()->setValue(ui->TEMintStatus->verticalScrollBar()->maximum()); // Automatically scroll to end of text
         return;
@@ -487,7 +487,7 @@ void PrivacyDialog::sendzSCU()
 
     // Clear zpiv selector in case it was used
     ZSCUControlDialog::setSelectedMints.clear();
-    ui->labelzFacSelected_int->setText(QString("0"));
+    ui->labelzScuSelected_int->setText(QString("0"));
     ui->labelQuantitySelected_int->setText(QString("0"));
 
     // Some statistics for entertainment
@@ -526,7 +526,7 @@ void PrivacyDialog::sendzSCU()
     strReturn += strStats;
 
     // Clear amount to avoid double spending when accidentally clicking twice
-    ui->zFacpayAmount->setText ("0");
+    ui->zScupayAmount->setText ("0");
 
     ui->TEMintStatus->setPlainText(strReturn);
     ui->TEMintStatus->repaint();
@@ -799,15 +799,15 @@ void PrivacyDialog::updateSPORK16Status()
         ui->pushButtonMintzSCU->setToolTip(tr("zSCU is currently disabled due to maintenance."));
 
         // Spend zSCU
-        ui->pushButtonSpendzFac->setEnabled(false);
-        ui->pushButtonSpendzFac->setToolTip(tr("zSCU is currently disabled due to maintenance."));
+        ui->pushButtonSpendzScu->setEnabled(false);
+        ui->pushButtonSpendzScu->setToolTip(tr("zSCU is currently disabled due to maintenance."));
     } else if (!fMaintenanceMode && !fButtonsEnabled) {
         // Mint zSCU
         ui->pushButtonMintzSCU->setEnabled(true);
         ui->pushButtonMintzSCU->setToolTip(tr("PrivacyDialog", "Enter an amount of SCU to convert to zSCU", 0));
 
         // Spend zSCU
-        ui->pushButtonSpendzFac->setEnabled(true);
-        ui->pushButtonSpendzFac->setToolTip(tr("Spend Zerocoin. Without 'Pay To:' address creates payments to yourself."));
+        ui->pushButtonSpendzScu->setEnabled(true);
+        ui->pushButtonSpendzScu->setToolTip(tr("Spend Zerocoin. Without 'Pay To:' address creates payments to yourself."));
     }
 }

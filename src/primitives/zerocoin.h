@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FAC_ZEROCOIN_H
-#define FAC_ZEROCOIN_H
+#ifndef SCU_ZEROCOIN_H
+#define SCU_ZEROCOIN_H
 
 #include <amount.h>
 #include <limits.h>
@@ -247,4 +247,4 @@ public:
     int GetNeededSpends();
 };
 
-#endif //FAC_ZEROCOIN_H
+#endif //SCU_ZEROCOIN_H

@@ -38,7 +38,7 @@ public:
         Encrypt,        /** Encrypt unencrypted wallet */
         ToggleLock,     /** Toggle wallet lock state */
         ChangePass,     /** Change passphrase */
-        Send_FAC,       /** Send SCU */
+        Send_SCU,       /** Send SCU */
         Send_zSCU,      /** Send zSCU */
         Mint_zSCU,      /** Mint zSCU */
         BIP_38,         /** BIP38 menu */

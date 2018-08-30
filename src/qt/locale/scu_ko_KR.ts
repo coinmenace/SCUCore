@@ -177,7 +177,7 @@
     </message>
     <message>
         <source>SCU will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your PIVs from being stolen by malware infecting your computer.</source>
-        <translation>FAC는 이제 암호화 프로세스를 마치기 위해 닫힐것입니다. 지갑을 암호화하더라도 맬웨어로 인한 PIVs 의 도난당하는 것을 완벽하게 보호 할 수는 없습니다.</translation>
+        <translation>SCU는 이제 암호화 프로세스를 마치기 위해 닫힐것입니다. 지갑을 암호화하더라도 맬웨어로 인한 PIVs 의 도난당하는 것을 완벽하게 보호 할 수는 없습니다.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -678,7 +678,7 @@
     </message>
     <message>
         <source>Modify configuration options for SCU</source>
-        <translation>FAC에 대한 구성 옵션 수정</translation>
+        <translation>SCU에 대한 구성 옵션 수정</translation>
     </message>
     <message>
         <source>Sign messages with your SCU addresses to prove you own them</source>
@@ -1813,15 +1813,15 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening SCU's configuration screen.</source>
-        <translation>난독화가 성공적으로 높게 설정되었습니다.(%1 및 2 rounds) FAC의 설정 화면을 열어 언제든지 다시 변경할 수 있습니다.</translation>
+        <translation>난독화가 성공적으로 높게 설정되었습니다.(%1 및 2 rounds) SCU의 설정 화면을 열어 언제든지 다시 변경할 수 있습니다.</translation>
     </message>
     <message>
         <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening SCU's configuration screen.</source>
-        <translation>난독화가 성공적으로 높게 설정되었습니다.(%1 및 8 rounds) FAC의 설정 화면을 열어 언제든지 다시 변경할 수 있습니다.</translation>
+        <translation>난독화가 성공적으로 높게 설정되었습니다.(%1 및 8 rounds) SCU의 설정 화면을 열어 언제든지 다시 변경할 수 있습니다.</translation>
     </message>
     <message>
         <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening SCU's configuration screen.</source>
-        <translation>난독화가 성공적으로 높게 설정되었습니다.(%1 및 16 rounds) FAC의 설정 화면을 열어 언제든지 다시 변경할 수 있습니다.</translation>
+        <translation>난독화가 성공적으로 높게 설정되었습니다.(%1 및 16 rounds) SCU의 설정 화면을 열어 언제든지 다시 변경할 수 있습니다.</translation>
     </message>
 </context>
 <context>
@@ -1903,7 +1903,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <source>Automatically start SCU after logging in to the system.</source>
-        <translation>시스템 로그인 후 FAC을 자동으로 시작합니다.</translation>
+        <translation>시스템 로그인 후 SCU을 자동으로 시작합니다.</translation>
     </message>
     <message>
         <source>&amp;Start SCU on system login</source>
@@ -1935,7 +1935,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <source>The user interface language can be set here. This setting will take effect after restarting SCU.</source>
-        <translation>사용자 인터페이스 언어를 설정할 수 있습니다. 이 설정은 FAC을 다시 시작한 후에 적용됩니다.</translation>
+        <translation>사용자 인터페이스 언어를 설정할 수 있습니다. 이 설정은 SCU을 다시 시작한 후에 적용됩니다.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
@@ -2288,7 +2288,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in scu.conf</
     </message>
     <message>
         <source>Cannot start scu: click-to-pay handler</source>
-        <translation>FAC을 시작할 수 없습니다: 결제하기 위한 클릭 처리</translation>
+        <translation>SCU을 시작할 수 없습니다: 결제하기 위한 클릭 처리</translation>
     </message>
     <message>
         <source>URI cannot be parsed! This can be caused by an invalid SCU address or malformed URI parameters.</source>
@@ -5584,7 +5584,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <source>Disable all SCU specific functionality (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, default: %u)</source>
-        <translation>FAC의 모든 특정 기능들을 비활성화합니다(마스터노드, 난독화, SwiftTX, Budgeting) (0-1, 기본값: %u)</translation>
+        <translation>SCU의 모든 특정 기능들을 비활성화합니다(마스터노드, 난독화, SwiftTX, Budgeting) (0-1, 기본값: %u)</translation>
     </message>
     <message>
         <source>Enable SwiftX, show confirmations for locked transactions (bool, default: %s)</source>

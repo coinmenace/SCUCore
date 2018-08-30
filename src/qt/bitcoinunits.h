@@ -58,8 +58,8 @@ public:
      */
     enum Unit {
         SCU,
-        mFAC,
-        uFAC
+        mSCU,
+        uSCU
     };
 
     enum SeparatorStyle {

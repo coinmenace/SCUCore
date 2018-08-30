@@ -2082,7 +2082,7 @@ CAmount GetSeeSaw(const CAmount& blockValue, int nMasternodeCount, int nHeight)
     return ret;
 }
 
-int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount, bool isZFACStake)
+int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount, bool isZSCUStake)
 {
     int64_t ret = 0;
 
@@ -2104,7 +2104,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     } else {
         //When zSCU is staked, masternode only gets 2 SCU
         ret = 3 * COIN;
-        if (isZFACStake)
+        if (isZSCUStake)
             ret = 2 * COIN;
     }
 
@@ -2624,7 +2624,7 @@ void ThreadScriptCheck()
     scriptcheckqueue.Thread();
 }
 
-void RecalculateZFACMinted()
+void RecalculateZSCUMinted()
 {
     CBlockIndex *pindex = chainActive[Params().Zerocoin_StartHeight()];
     int nHeightEnd = chainActive.Height();
@@ -2651,7 +2651,7 @@ void RecalculateZFACMinted()
     }
 }
 
-void RecalculateZFACSpent()
+void RecalculateZSCUSpent()
 {
     CBlockIndex* pindex = chainActive[Params().Zerocoin_StartHeight()];
     while (true) {
@@ -2687,7 +2687,7 @@ void RecalculateZFACSpent()
     }
 }
 
-bool RecalculateFACSupply(int nHeightStart)
+bool RecalculateSCUSupply(int nHeightStart)
 {
     if (nHeightStart > chainActive.Height())
         return false;
@@ -2807,7 +2807,7 @@ bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError
     return true;
 }
 
-bool UpdateZFACSupply(const CBlock& block, CBlockIndex* pindex)
+bool UpdateZSCUSupply(const CBlock& block, CBlockIndex* pindex)
 {
     std::list<CZerocoinMint> listMints;
     bool fFilterInvalid = pindex->nHeight >= Params().Zerocoin_Block_RecalculateAccumulators();
@@ -3063,13 +3063,13 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 
     //A one-time event where money supply counts were off and recalculated on a certain block.
     if (pindex->nHeight == Params().Zerocoin_Block_RecalculateAccumulators() + 1) {
-        RecalculateZFACMinted();
-        RecalculateZFACSpent();
-        RecalculateFACSupply(Params().Zerocoin_StartHeight());
+        RecalculateZSCUMinted();
+        RecalculateZSCUSpent();
+        RecalculateSCUSupply(Params().Zerocoin_StartHeight());
     }
 
     //Track zSCU money supply in the block index
-    if (!UpdateZFACSupply(block, pindex))
+    if (!UpdateZSCUSupply(block, pindex))
         return state.DoS(100, error("%s: Failed to calculate new zSCU supply for block=%s height=%d", __func__,
                                     block.GetHash().GetHex(), pindex->nHeight), REJECT_INVALID);
 
@@ -4407,7 +4407,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         if (!stake)
             return error("%s: null stake ptr", __func__);
 
-        if (stake->IsZFAC() && !ContextualCheckZerocoinStake(pindexPrev->nHeight, stake.get()))
+        if (stake->IsZSCU() && !ContextualCheckZerocoinStake(pindexPrev->nHeight, stake.get()))
             return state.DoS(100, error("%s: staked zSCU fails context checks", __func__));
 
         uint256 hash = block.GetHash();
