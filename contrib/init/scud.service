@@ -1,0 +1,26 @@
+[Unit]
+Description=SCU's distributed currency daemon
+After=network.target
+
+[Service]
+User=scu
+Group=scu
+
+Type=forking
+PIDFile=/var/lib/scud/scud.pid
+
+ExecStart=/usr/bin/scud -daemon -pid=/var/lib/scud/scud.pid \
+          -conf=/etc/scu/scu.conf -datadir=/var/lib/scud
+
+ExecStop=-/usr/bin/scu-cli -conf=/etc/scu/scu.conf \
+         -datadir=/var/lib/scud stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

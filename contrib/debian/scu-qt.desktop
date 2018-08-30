@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SCU
+Comment=SCU P2P Cryptocurrency
+Comment[fr]=SCU, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=SCU, eşten eşe kriptografik sanal para birimi
+Exec=scu-qt %u
+Terminal=false
+Type=Application
+Icon=fac128
+MimeType=x-scheme-handler/scu;
+Categories=Office;Finance;

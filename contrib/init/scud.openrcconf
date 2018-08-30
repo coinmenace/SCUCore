@@ -1,0 +1,26 @@
+# /etc/conf.d/scud: config file for /etc/init.d/scud
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/scu/scu.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/scud"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/scud.pid"
+
+# Where to write scud data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/scud"
+
+# User and group to own scud process
+#BITCOIND_USER="scu"
+#BITCOIND_GROUP="scu"
+
+# Path to scud executable
+#BITCOIND_BIN="/usr/bin/scud"
+
+# Nice value to run scud under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""
