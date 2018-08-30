@@ -159,11 +159,11 @@ void ZSCUControlDialog::updateLabels()
     }
 
     //update this dialog's labels
-    ui->labelZFac_int->setText(QString::number(nAmount));
+    ui->labelZScu_int->setText(QString::number(nAmount));
     ui->labelQuantity_int->setText(QString::number(setSelectedMints.size()));
 
     //update PrivacyDialog labels
-    privacyDialog->setZFacControlLabels(nAmount, setSelectedMints.size());
+    privacyDialog->setZScuControlLabels(nAmount, setSelectedMints.size());
 }
 
 std::vector<CMintMeta> ZSCUControlDialog::GetSelectedMints()
