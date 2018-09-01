@@ -178,12 +178,12 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1534234000;
+        genesis.nTime = 1535781755;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 2682532;
 
         hashGenesisBlock = genesis.GetHash();
-        /**if(genesis.GetHash() != uint256S("0x"))
+        if(genesis.GetHash() != uint256S("0x"))
         {
             bool fNegative;
             bool fOverflow;
@@ -212,9 +212,9 @@ public:
             printf("Mainnet block.Merkleroot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }
         std::cout << std::string("Finished calculating MainNet Genesis Block:\n");
-        **/
-        assert(hashGenesisBlock == uint256("0x00000b7c773e5efa5563e5568c88844e3a60deed42b012637fd7877ed12ba9bc"));
-        assert(genesis.hashMerkleRoot == uint256("0x7eb680959954521f87cd070f66acf963630921eee631c85cdc15dd3321b5a1fd"));
+        /***/
+        //assert(hashGenesisBlock == uint256("0x00000b7c773e5efa5563e5568c88844e3a60deed42b012637fd7877ed12ba9bc"));
+        //assert(genesis.hashMerkleRoot == uint256("0x7eb680959954521f87cd070f66acf963630921eee631c85cdc15dd3321b5a1fd"));
 
         vSeeds.push_back(CDNSSeedData("seed1", "seed1.securypto.io"));     // Primary DNS Seeder from Fuzzbawls
         vSeeds.push_back(CDNSSeedData("seed2", "seed2.securypto.io"));    // Secondary DNS Seeder from Fuzzbawls
@@ -312,11 +312,11 @@ public:
         nRejectOldSporkKey = 1522454400; //!> Reject old spork key after Saturday, March 31, 2018 12:00:00 AM GMT
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1534234500;
+        genesis.nTime = 1535781855;
         genesis.nNonce = 3018081;
 
         hashGenesisBlock = genesis.GetHash();
-        /**if(genesis.GetHash() != uint256S("0x"))
+        if(genesis.GetHash() != uint256S("0x"))
         {
             bool fNegative;
             bool fOverflow;
@@ -345,8 +345,8 @@ public:
             printf("Testnet block.Merkleroot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }
         std::cout << std::string("Finished calculating Testnet Genesis Block:\n");
-        */
-        assert(hashGenesisBlock == uint256("0x0000023b09a652e60479b72fe997b67445c020d0e47c4fd2ff3708f063abd712"));
+        /***/
+        //assert(hashGenesisBlock == uint256("0x0000023b09a652e60479b72fe997b67445c020d0e47c4fd2ff3708f063abd712"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -412,12 +412,12 @@ public:
         nTargetTimespan = 24 * 60 * 60; // SCU: 1 day
         nTargetSpacing = 1 * 60;        // SCU: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1534235500;
+        genesis.nTime = 1535781955;
         genesis.nBits = 0x207fffff;
         genesis.nNonce = 12345;
 
         hashGenesisBlock = genesis.GetHash();
-        /**if(genesis.GetHash() != uint256S("0x"))
+        if(genesis.GetHash() != uint256S("0x"))
         {
             bool fNegative;
             bool fOverflow;
@@ -445,9 +445,9 @@ public:
             printf("Testnet block.GetHash = %s\n", genesis.GetHash().GetHex().c_str());
             printf("Testnet block.Merkleroot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }
-        */
+        /***/
         nDefaultPort = 8435;
-        assert(hashGenesisBlock == uint256("0x297a85332fb8fa24c5338d403b261ac7ce78847dc8bb637a69252759d1575d01"));
+        //assert(hashGenesisBlock == uint256("0x297a85332fb8fa24c5338d403b261ac7ce78847dc8bb637a69252759d1575d01"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
