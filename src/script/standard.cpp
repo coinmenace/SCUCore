@@ -10,7 +10,7 @@
 #include "script/script.h"
 #include "util.h"
 #include "utilstrencodings.h"
-
+#include "wallet.h"
 #include <boost/foreach.hpp>
 
 using namespace std;
