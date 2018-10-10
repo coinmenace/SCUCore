@@ -459,8 +459,9 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         //Calculate the accumulator checkpoint only if the previous cached checkpoint need to be updated
         uint256 nCheckpoint;
         uint256 hashBlockLastAccumulated = chainActive[nHeight - (nHeight % 10) - 10]->GetBlockHash();
+        LogPrintf("Done 6\n");
         if (nHeight >= pCheckpointCache.first || pCheckpointCache.second.first != hashBlockLastAccumulated) {
-            LogPrintf("Done 6\n");
+            LogPrintf("Done 7\n");
             //For the period before v2 activation, zSCU will be disabled and previous block's checkpoint is all that will be needed
             pCheckpointCache.second.second = pindexPrev->nAccumulatorCheckpoint;
             if (pindexPrev->nHeight + 1 >= Params().Zerocoin_Block_V2_Start()) {
@@ -477,12 +478,13 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
                 }
             }
         }
-
+        LogPrintf("Done 8\n");
         pblock->nAccumulatorCheckpoint = pCheckpointCache.second.second;
         pblocktemplate->vTxSigOps[0] = GetLegacySigOpCount(pblock->vtx[0]);
-
+        LogPrintf("Done 9\n");
         CValidationState state;
         if (!TestBlockValidity(state, *pblock, pindexPrev, false, false)) {
+            LogPrintf("Done 10\n");
             LogPrintf("CreateNewBlock() : TestBlockValidity failed\n");
             mempool.clear();
             return NULL;
@@ -493,7 +495,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
 //            pwalletMain->AddToWallet(wtx);
 //        }
     }
-
+    LogPrintf("Done 11\n");
     return pblocktemplate.release();
 }
 
@@ -636,9 +638,11 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
             continue;
 
         unique_ptr<CBlockTemplate> pblocktemplate(CreateNewBlockWithKey(reservekey, pwallet, fProofOfStake));
+        LogPrintf("Create Block \n");
+///
         if (!pblocktemplate.get())
             continue;
-
+        LogPrintf("Done Mining \n");
         CBlock* pblock = &pblocktemplate->block;
         IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
