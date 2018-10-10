@@ -437,23 +437,30 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         LogPrintf("CreateNewBlock(): total size %u\n", nBlockSize);
 
         // Compute final coinbase transaction.
+        LogPrintf("Done 0\n");
         pblock->vtx[0].vin[0].scriptSig = CScript() << nHeight << OP_0;
         if (!fProofOfStake) {
+            LogPrintf("Done 1\n");
             pblock->vtx[0] = txNew;
             pblocktemplate->vTxFees[0] = -nFees;
+            LogPrintf("Done 2\n");
         }
 
         // Fill in header
         pblock->hashPrevBlock = pindexPrev->GetBlockHash();
         if (!fProofOfStake)
+            LogPrintf("Done 3\n");
             UpdateTime(pblock, pindexPrev);
+        LogPrintf("Done 4\n");
         pblock->nBits = GetNextWorkRequired(pindexPrev, pblock);
+        LogPrintf("Done 5\n");
         pblock->nNonce = 0;
 
         //Calculate the accumulator checkpoint only if the previous cached checkpoint need to be updated
         uint256 nCheckpoint;
         uint256 hashBlockLastAccumulated = chainActive[nHeight - (nHeight % 10) - 10]->GetBlockHash();
         if (nHeight >= pCheckpointCache.first || pCheckpointCache.second.first != hashBlockLastAccumulated) {
+            LogPrintf("Done 6\n");
             //For the period before v2 activation, zSCU will be disabled and previous block's checkpoint is all that will be needed
             pCheckpointCache.second.second = pindexPrev->nAccumulatorCheckpoint;
             if (pindexPrev->nHeight + 1 >= Params().Zerocoin_Block_V2_Start()) {
