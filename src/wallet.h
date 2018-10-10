@@ -613,7 +613,7 @@ public:
     bool DelAddressBook(const CTxDestination& address);
 
     bool UpdatedTransaction(const uint256& hashTx);
-    void GetScriptForMining(boost::shared_ptr<CReserveScript> &script);
+
     void Inventory(const uint256& hash)
     {
         {
