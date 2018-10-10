@@ -314,19 +314,6 @@ public:
 
 
 
-void GetScriptForMining(const CReserveScript& script)
-{
-    script.
-    CReserveKey& rKey(new CReserveKey(this));
-    CPubKey pubkey;
-    if (!rKey->GetReservedKey(pubkey))
-        return;
-
-    //script = rKey;
-    script = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
-
-}
-
 CScript GetScriptForDestination(const CTxDestination& dest)
 {
     CScript script;
