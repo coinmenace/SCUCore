@@ -316,7 +316,8 @@ public:
 
 void GetScriptForMining(const CReserveScript& script)
 {
-    CReserveKey rKey(new CReserveKey(this));
+    script.
+    CReserveKey& rKey(new CReserveKey(this));
     CPubKey pubkey;
     if (!rKey->GetReservedKey(pubkey))
         return;
