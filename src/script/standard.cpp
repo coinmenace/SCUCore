@@ -311,6 +311,21 @@ public:
 };
 }
 
+
+
+
+void GetScriptForMining(const CReserveScript& script)
+{
+    CReserveKey rKey(new CReserveKey(this));
+    CPubKey pubkey;
+    if (!rKey->GetReservedKey(pubkey))
+        return;
+
+    script = rKey;
+    script->reserveScript = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
+
+}
+
 CScript GetScriptForDestination(const CTxDestination& dest)
 {
     CScript script;

@@ -181,4 +181,11 @@ void ECC_Stop(void);
 /** Check that required EC support is available at runtime. */
 bool ECC_InitSanityCheck(void);
 
+
+
+
+
+
+
+
 #endif // SCU_KEY_H
