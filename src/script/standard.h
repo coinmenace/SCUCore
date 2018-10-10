@@ -9,11 +9,12 @@
 
 #include "script/interpreter.h"
 #include "uint256.h"
-
+#include "wallet.h"
 #include <boost/variant.hpp>
 
 #include <stdint.h>
 
+class CReserveKey;
 class CKeyID;
 class CScript;
 
