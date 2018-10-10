@@ -321,8 +321,8 @@ void GetScriptForMining(const CReserveScript& script)
     if (!rKey->GetReservedKey(pubkey))
         return;
 
-    script = rKey;
-    script->reserveScript = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
+    //script = rKey;
+    script = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
 
 }
 
